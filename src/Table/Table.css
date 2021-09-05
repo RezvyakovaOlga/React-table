@@ -1,0 +1,46 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(87, 87, 87);
+    background-color: rgb(116, 116, 116);
+}
+
+th, td {
+    padding: 20px;
+}
+
+thead {
+    color: white;
+    text-shadow: 1px 1px 1px grey;
+}
+  
+thead th {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+    border: 1px solid rgb(87, 87, 87);
+    cursor: pointer;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #b3b3b3;
+}
+  
+tbody tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+
+/* pagination */
+.pagesList {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.pageSwitch {
+    list-style-type: none;
+    display: inline;
+    border: 1px solid black;
+    padding: 5px;
+    margin-right: 20px;
+    cursor: pointer;
+}

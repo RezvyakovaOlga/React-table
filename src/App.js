@@ -1,24 +1,56 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import SearchLine from './SearchLine';
+import Table from './Table';
 
-function App() {
+const App = () => {
+  const [defaultDataArr, setDefaultDataArr] = useState([]);
+  const [dataArr, setDataArr] = useState([]);
+  const [tableHeaders, setTableHeaders] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  //fetching data
+  useEffect(() => {
+    fetch('http://www.filltext.com/?rows=230&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&description={lorem|32}')
+    .then(response => response.json())
+    .then(data => {
+      setDataArr(data)
+      setDefaultDataArr(data)
+      setTableHeaders(Object.keys(data[0]))
+    })
+    .catch(error => console.log(error));
+  }, []);
+
+  //filtering and controlling input
+  const filterFoo = (value) => {
+    const filteredArr = defaultDataArr.filter(item => {
+      const valuesArr = Object.values(item);
+      let flag = false;
+      for (let values of valuesArr) {
+        if (values.includes(value)) {
+          flag = true;
+          break
+        }
+      }
+      if (flag) {
+        return item
+      }
+    })
+    setDataArr(filteredArr)   
+  };
+  
+  const onInputChange = (e) => {
+    setInputValue(e.target.value)
+
+    filterFoo(e.target.value)
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='title'>Table constructor</div>
+      <SearchLine value={inputValue} onChange={onInputChange} />
+      <Table dataArr={dataArr} inputValue={inputValue} headers={tableHeaders} />
+    </>
   );
 }
 

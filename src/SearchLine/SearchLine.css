@@ -1,0 +1,21 @@
+.searchWrapper {
+    margin: 20px 0;
+}
+
+.label {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.input {
+    width: 300px;
+	font-size: 13px;
+	padding: 6px 0 4px 10px;
+	border: 1px solid #cecece;
+	background: #f0f0f0;
+	border-radius: 8px;
+}
+
+.input:focus {
+	outline: none;
+}
