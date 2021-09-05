@@ -11,7 +11,7 @@ const App = () => {
 
   //fetching data
   useEffect(() => {
-    fetch('http://www.filltext.com/?rows=230&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&description={lorem|32}')
+    fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(data => {
       setDataArr(data)
@@ -27,7 +27,7 @@ const App = () => {
       const valuesArr = Object.values(item);
       let flag = false;
       for (let values of valuesArr) {
-        if (values.includes(value)) {
+        if (values.toString().includes(value)) {
           flag = true;
           break
         }
