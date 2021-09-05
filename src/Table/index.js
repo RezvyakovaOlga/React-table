@@ -80,7 +80,7 @@ const Table = ({ dataArr, inputValue, headers }) => {
                 </tbody>
             </table>
             <ul className='pagesList'>
-                {pagesArr.map((_, i) => <li onClick={definePageNumber} className='pageSwitch' key={i}>{i+1}</li>)}
+                {pagesArr.map((_, i) => <li onClick={definePageNumber} className={`pageSwitch ${currentPage === i+1 ? 'active' : null}`} key={i}>{i+1}</li>)}
             </ul>
         </>
     )

@@ -28,6 +28,10 @@ tbody tr:nth-child(even) {
     background-color: #f0f0f0;
 }
 
+.active {
+    background-color: #b3b3b3;
+}
+
 
 /* pagination */
 .pagesList {
